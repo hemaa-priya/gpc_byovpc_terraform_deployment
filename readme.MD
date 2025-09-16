@@ -3,8 +3,8 @@
 - Creates a VPC
 - Creates a subnet within the VPC
 - Creates a Cloud Nat
-- Registers the network confguration in databricks
-- Creates a customer managed databricks workspace
+- Registers the network configuration in databricks
+- Creates a customer managed databricks workspace with the network config created
 
 ## TESTING
 
