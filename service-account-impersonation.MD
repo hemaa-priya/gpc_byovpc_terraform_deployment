@@ -46,12 +46,15 @@ includedPermissions:
 - iam.roles.update
 - iam.serviceAccounts.getIamPolicy
 - iam.serviceAccounts.setIamPolicy
+- iam.serviceAccountAdmin
 - resourcemanager.projects.get
 - resourcemanager.projects.getIamPolicy
 - resourcemanager.projects.setIamPolicy
 - serviceusage.services.enable
 - serviceusage.services.get
 - serviceusage.services.list
+- compute.securityAdmin
+- compute.networkAdmin
 - compute.networks.get
 - compute.subnetworks.get
 - compute.projects.get
