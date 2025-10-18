@@ -1,8 +1,3 @@
-variable "databricks_account_id" {}
-variable "databricks_account_console_url" {}
-variable "databricks_workspace_name" {}
-variable "databricks_admin_user" {}
-
 data "google_client_openid_userinfo" "me" {}
 data "google_client_config" "current" {}
 
@@ -23,7 +18,7 @@ resource "google_compute_network" "databricks_vpc" {
 
 resource "google_compute_subnetwork" "databricks_subnet" {
   name          = "databricks-subnet-${random_string.databricks_suffix.result}"
-  ip_cidr_range = "10.10.0.0/24"
+  ip_cidr_range = "10.10.0.0/20"
   region        = var.google_region
   network       = google_compute_network.databricks_vpc.id
 }
@@ -91,9 +86,4 @@ resource "databricks_user" "admin" {
   user_name  = var.databricks_admin_user
 }
 
-######################################################
-# Outputs
-######################################################
-output "workspace_url" {
-  value = databricks_mws_workspaces.databricks_workspace.workspace_url
-}
+

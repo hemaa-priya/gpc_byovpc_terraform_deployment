@@ -1,7 +1,3 @@
-variable "google_service_account_email" {}
-variable "google_project_name" {}
-variable "google_region" {}
-
 terraform {
   required_providers {
     databricks = {
@@ -24,7 +20,7 @@ provider "google" {
 
 provider "databricks" {
   alias                  = "accounts"
-  host                   = "https://accounts.gcp.databricks.com"
+  host                   = var.databricks_account_console_url
   google_service_account = var.google_service_account_email
 }
 
