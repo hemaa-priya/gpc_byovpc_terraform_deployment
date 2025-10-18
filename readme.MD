@@ -8,13 +8,13 @@ This repository deploys a Customer-managed network on Google Cloud and provision
 - `main.tf`: All GCP and Databricks resources and data sources
 - `outputs.tf`: All outputs
 - `terraform.tfvars`: File containing all input variable values
-- `service-account-impersonation.MD`: Optional guide for GSA impersonation
+- `service-account-impersonation.MD`: Guide for GSA impersonation
 
 ### Prerequisites
 - Terraform installed (v1.3+ recommended)
 - Google Cloud SDK (`gcloud`) installed
 - A Google Service Account (GSA) with permissions to create networking resources
-- A Databricks Account with permissions to create workspaces
+- A Databricks Account. Refer this guide - [Subscribe to Databricks from GCP Marketplace](https://docs.databricks.com/gcp/en/admin/account-settings-gcp/create-subscription)
 
 Enable required APIs on your GCP project:
 ```
@@ -22,7 +22,7 @@ gcloud services enable compute.googleapis.com --project <PROJECT_ID>
 ```
 
 ### Authentication
-Use a Google Service Account for both the Google provider and Databricks provider (via Google Oauth access token). If impersonating a GSA, run:
+Use a Google Service Account with roles/Owner permission to the project and run the below commands.
 ```
 gcloud config set project <PROJECT_ID>
 gcloud config set auth/impersonate_service_account <GSA_NAME>@<PROJECT_ID>.iam.gserviceaccount.com
@@ -36,7 +36,7 @@ Follow these steps to add the service account to the Databricks account console:
 - [Add](https://docs.gcp.databricks.com/administration-guide/users-groups/users.html#add-users-to-your-account-using-the-account-console) service-account as an accounts user.
 - [Assign](https://docs.gcp.databricks.com/administration-guide/users-groups/users.html#assign-account-admin-roles-to-a-user) accounts admin role to the service account.
 
-If you are using service account impersonation, see [service-account-impersonation.MD](service-account-impersonation.MD).
+(RECOMMENDED) For more refined and granular level of permissions, use service account impersonation, see [service-account-impersonation.MD](service-account-impersonation.MD).
 
 ### Variables
 All variable definitions are in `variables.tf`. Provide values via `terraform.tfvars` (auto-loaded, no flags needed).
@@ -87,8 +87,7 @@ Key output:
 
 ### Customization
 - Subnet CIDR: The subnet CIDR is currently set to `10.10.0.0/20` in `main.tf`. Update the `ip_cidr_range` in `google_compute_subnetwork.databricks_subnet` if you need a different range.
-- Regions/Projects: Change `google_region` and `google_project_name` in `terraform.tfvars`.
-- Workspace Name: Change `databricks_workspace_name` in `terraform.tfvars`.
+- Regions/Projects: Change `google_region` and `google_project_name` in `terraform.tfvars` according to your GCP project requirements.
 
 ### Troubleshooting
 - Permission errors (403): Ensure your GSA has the required roles and that the correct project is set in `gcloud`.
