@@ -36,7 +36,7 @@ Follow these steps to add the service account to the Databricks account console:
 - [Add](https://docs.gcp.databricks.com/administration-guide/users-groups/users.html#add-users-to-your-account-using-the-account-console) service-account as an accounts user.
 - [Assign](https://docs.gcp.databricks.com/administration-guide/users-groups/users.html#assign-account-admin-roles-to-a-user) accounts admin role to the service account.
 
-(RECOMMENDED) For more refined and granular level of permissions, use service account impersonation, see [service-account-impersonation.MD](service-account-impersonation.MD).
+**(RECOMMENDED) For more refined and granular level of permissions, use service account impersonation, see [service-account-impersonation.MD](service-account-impersonation.MD).**
 
 ### Variables
 All variable definitions are in `variables.tf`. Provide values via `terraform.tfvars` (auto-loaded, no flags needed).
