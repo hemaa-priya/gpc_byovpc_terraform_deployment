@@ -46,30 +46,20 @@ includedPermissions:
 - iam.roles.update
 - iam.serviceAccounts.getIamPolicy
 - iam.serviceAccounts.setIamPolicy
+- iam.serviceAccountAdmin
 - resourcemanager.projects.get
 - resourcemanager.projects.getIamPolicy
 - resourcemanager.projects.setIamPolicy
 - serviceusage.services.enable
 - serviceusage.services.get
 - serviceusage.services.list
+- compute.securityAdmin
+- compute.networkAdmin
 - compute.networks.get
 - compute.subnetworks.get
 - compute.projects.get
-- compute.networks.create
-- compute.subnetworks.create
-- compute.routers.create
-- compute.networks.updatePolicy
-- compute.routers.get
-- compute.routers.delete
-- compute.routers.update
-- iam.serviceAccountKeys.create
-- iam.serviceAccounts.get
-- iam.serviceAccounts.update
-- iam.serviceAccounts.delete
-- compute.firewalls.get
-- compute.firewalls.create
-- compute.subnetworks.getIamPolicy
-- compute.subnetworks.setIamPolicy
+- compute.forwardingRules.get
+- compute.forwardingRules.list
 EOF
 ```
 ### Verify the role creation
